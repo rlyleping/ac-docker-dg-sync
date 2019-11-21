@@ -10,12 +10,24 @@ dsconfig create-external-server \
     --set bind-dn:cn=dmanager  \
     --set password:AACevSc51P8QzyVUOgoidez8NGMTtKy/xdk= 
 
-# Set Load Balancing Property
+# Set User Store Adapter Property
 
 dsconfig set-store-adapter-prop \
     --adapter-name UserStoreAdapter  \
     --set auxiliary-ldap-objectclass:anycompanyUser  \
     --set include-base-dn:ou=People,dc=anycompany,dc=co 
+
+# Create PF External Server
+
+dsconfig create-external-server \
+    --server-name pingfederate  \
+    --type http  \
+    --set base-url:https://pingfederate:9031  \
+    --set hostname-verification-method:allow-all  \
+    --set key-manager-provider:Null  \
+    --set "trust-manager-provider:Blind Trust"
+
+
 
 
 
