@@ -9,27 +9,7 @@ dsconfig create-external-server \
     --set location:Docker  \
     --set bind-dn:cn=dmanager  \
     --set password:AACevSc51P8QzyVUOgoidez8NGMTtKy/xdk= 
-    --set connection-security:ssl \
-    --set key-manager-provider:Null \
-    --set trust-manager-provider:JKS
 
-# Create LBA
-
-dsconfig create-load-balancing-algorithm \
-    --type failover \
-    --algorithm-name user-store-lba \
-    --set enabled:true \
-    --set backend-server:pingdirectory
-
-# Create Store Adapters
-
-dsconfig set-store-adapter-prop \
-    --adapter-name UserStoreAdapter \
-    --set enabled:true \
-    --set structural-ldap-objectclass:inetOrgPerson \
-    --set include-base-dn:ou=people,${USER_BASE_DN} \
-    --set create-dn-pattern:entryUUID=server-generated,ou=people,${USER_BASE_DN} \
-    --set load-balancing-algorithm:user-store-lba
 
 
 
