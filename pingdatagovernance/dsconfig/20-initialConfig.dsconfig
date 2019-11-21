@@ -10,12 +10,22 @@ dsconfig create-external-server \
     --set bind-dn:cn=dmanager  \
     --set password:AACevSc51P8QzyVUOgoidez8NGMTtKy/xdk= 
 
+# Set LBA
+
+dsconfig create-load-balancing-algorithm \
+    --algorithm-name dg-lba  \
+    --type failover  \
+    --set enabled:true  \
+    --set backend-server:pingdirectory 
+
+
 # Set User Store Adapter Property
 
 dsconfig set-store-adapter-prop \
     --adapter-name UserStoreAdapter  \
     --set auxiliary-ldap-objectclass:anycompanyUser  \
-    --set include-base-dn:ou=People,dc=anycompany,dc=co 
+    --set include-base-dn:ou=People,dc=anycompany,dc=co \
+    --set load-balancing-algorithm:dg-lba
 
 # Create PF External Server
 
