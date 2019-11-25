@@ -50,7 +50,7 @@ services:
     env_file:
       - ~/.pingidentity/devops
     ports:
-      - 443:2443
+      - 2443:443
     networks:
       - pingnet-internal
   
