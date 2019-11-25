@@ -41,7 +41,7 @@ services:
     networks:
       - pingnet-internal
 
-   datagovernance:
+  datagovernance:
     image: pingidentity/pingdatagovernance
     command: wait-for pingfederate:9031 -t 300 -- entrypoint.sh start-server
     environment:
