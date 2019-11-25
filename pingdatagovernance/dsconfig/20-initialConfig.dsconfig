@@ -27,6 +27,10 @@ dsconfig set-store-adapter-prop \
     --set include-base-dn:ou=People,dc=anycompany,dc=co \
     --set load-balancing-algorithm:dg-lba
 
+dsconfig set-store-adapter-prop \
+    --adapter-name UserStoreAdapter  \
+    --set enabled:true 
+
 # Create PF External Server
 
 dsconfig create-external-server \
