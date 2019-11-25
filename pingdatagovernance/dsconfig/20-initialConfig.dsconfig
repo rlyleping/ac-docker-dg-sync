@@ -39,6 +39,22 @@ dsconfig create-external-server \
     --set base-url:https://pingfederate:9031  \
     --set hostname-verification-method:allow-all  \
 
+# Add httpbin API external server
+
+dsconfig create-external-server \
+    --server-name http-bin  \
+    --type api  \
+    --set base-url:https://httpbin.org  \
+    --set hostname-verification-method:allow-all 
+
+
+# Add httpbin API endpoint
+
+dsconfig create-api-endpoint \
+    --endpoint-name httpbin  \
+    --set inbound-base-path:/anything  \
+    --set outbound-base-path:/anything  \
+    --set api-server:http-bin 
 
 
 
