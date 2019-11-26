@@ -16,6 +16,8 @@ services:
   pingfederate:
     image: pingidentity/pingfederate
     command: wait-for pingdirectory:389 -t 300 -- entrypoint.sh start-server
+    env_file:
+      - ./env_vars
     environment:
       - SERVER_PROFILE_URL=https://github.com/rlyleping/ac-docker-dg-sync.git
       - SERVER_PROFILE_PATH=pingfederate
