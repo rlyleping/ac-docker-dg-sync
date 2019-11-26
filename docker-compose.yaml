@@ -65,7 +65,7 @@ services:
       - 3636:636
       - 3443:443
     networks:
-      - pingnet
+      - pingnet-internal
   
   pingdataconsole:
     image: pingidentity/pingdataconsole
