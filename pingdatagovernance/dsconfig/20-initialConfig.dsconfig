@@ -62,5 +62,15 @@ dsconfig create-api-endpoint \
     --set api-server:http-bin 
 
 
+# Create PF ATV
+
+dsconfig create-access-token-validator \
+    --validator-name pingfederateATV  \
+    --type ping-federate  \
+    --set enabled:true  \
+    --set authorization-server:pingfederate  \
+    --set client-id:dgATV  \
+    --set client-secret:AACF9ScfRYobGxoIxgCG4m5LM6ic1ZgIfFU= 
+
 
 
