@@ -47,12 +47,6 @@ dsconfig create-external-server \
     --set base-url:https://httpbin.org  \
     --set hostname-verification-method:allow-all 
 
-# Policy for DG
-
-# dsconfig set-policy-decision-service-prop \
-#    --set pdp-mode:embedded 
-
-
 # Add httpbin API endpoint
 
 dsconfig create-api-endpoint \
@@ -72,5 +66,15 @@ dsconfig create-access-token-validator \
     --set client-id:dgATV  \
     --set client-secret:AACF9ScfRYobGxoIxgCG4m5LM6ic1ZgIfFU= 
 
+# Import default pass-through policies
 
+dsconfig set-policy-decision-service-prop \
+    --set pdp-mode:embedded  \
+    --set "deployment-package<PassThrough.sdp" 
+
+# Set PF ATV for http-bin endpoint
+
+dsconfig set-api-endpoint-prop \
+    --endpoint-name httpbin  \
+    --set access-token-validator:pingfederateATV 
 
