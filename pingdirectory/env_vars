@@ -1,3 +1,6 @@
+# Acceptance of the Ping Identity EULA
+PING_IDENTITY_ACCEPT_EULA=YES
+
 # The location MUST be provided
 LOCATION=Docker
 
