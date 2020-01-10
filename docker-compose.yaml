@@ -52,6 +52,22 @@ services:
     networks:
       - pingnet-internal
 
+  pingdatagovernance:
+    image: pingidentity/pingdatagovernance
+    env_file:
+      - ~/.pingidentity/devops
+    command: wait-for pingfederate:9031 -t 300 -- entrypoint.sh start-server
+    environment:
+      - SERVER_PROFILE_URL=https://github.com/rlyleping/ac-docker-dg-sync.git
+      - SERVER_PROFILE_PATH=pingdatagovernance
+      - PING_IDENTITY_ACCEPT_EULA=YES
+    env_file:
+      - ~/.pingidentity/devops
+    ports:
+      - 2443:443
+    networks:
+      - pingnet-internal
+
   pingdataconsole:
     image: pingidentity/pingdataconsole
     env_file:
