@@ -74,7 +74,7 @@ dsconfig set-policy-decision-service-prop \
 
 # Set PF ATV for http-bin endpoint
 
-dsconfig set-api-endpoint-prop \
-    --endpoint-name httpbin  \
-    --set access-token-validator:pingfederateATV 
+dsconfig set-gateway-api-endpoint-prop \
+   --endpoint-name httpbin  \
+   --set access-token-validator:pingfederateATV 
 
